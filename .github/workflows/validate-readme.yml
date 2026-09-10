@@ -89,3 +89,4 @@ jobs:
         run: |
           echo "❌ Generated files need to be updated. Please run `npm start` locally and commit the changes."
           exit 1
+}
