@@ -72,3 +72,11 @@ Line 429, Col 70: Unexpected closing delimiter ')' with no matching opening pair
 Line 429, Col 85: Unexpected closing delimiter ')' with no matching opening pair.
 ```
 **CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on .github/workflows/contributor-check.yml.
+
+### ❌ [2026-09-10] .github/workflows/skill-check.yml `source: mutation-cycle`
+**Symptom:** AST / TypeScript Compiler Validation Rejected
+**EVIDENCE (Machine-Copied Fact):**
+```
+Line 166, Col 1: Unclosed multiline comment block (/* ... */).
+```
+**CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on .github/workflows/skill-check.yml.
