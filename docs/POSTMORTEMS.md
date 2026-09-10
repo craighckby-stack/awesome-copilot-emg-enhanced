@@ -97,3 +97,12 @@ Line 70, Col 15: Unclosed opening delimiter '['.
 Line 70, Col 14: Unclosed opening delimiter '['.
 ```
 **CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on .github/workflows/traffic-reporting.yml.
+
+### ❌ [2026-09-10] .github/workflows/validate-agentic-workflows-pr.yml `source: mutation-cycle`
+**Symptom:** AST / TypeScript Compiler Validation Rejected
+**EVIDENCE (Machine-Copied Fact):**
+```
+Line 130, Col 1: Unclosed multiline comment block (/* ... */).
+Line 64, Col 13: Unclosed opening delimiter '{'.
+```
+**CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on .github/workflows/validate-agentic-workflows-pr.yml.
