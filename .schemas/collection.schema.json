@@ -3,7 +3,12 @@
   "title": "Collection Manifest",
   "description": "Schema for awesome-copilot collection manifest files",
   "type": "object",
-  "required": ["id", "name", "description", "items"],
+  "required": [
+    "id",
+    "name",
+    "description",
+    "items"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -44,7 +49,10 @@
       "maxItems": 50,
       "items": {
         "type": "object",
-        "required": ["path", "kind"],
+        "required": [
+          "path",
+          "kind"
+        ],
         "additionalProperties": false,
         "properties": {
           "path": {
@@ -56,7 +64,12 @@
           "kind": {
             "type": "string",
             "description": "Type of the item",
-            "enum": ["prompt", "instruction", "agent", "skill"]
+            "enum": [
+              "prompt",
+              "instruction",
+              "agent",
+              "skill"
+            ]
           },
           "usage": {
             "type": "string",
@@ -74,7 +87,10 @@
         "ordering": {
           "type": "string",
           "description": "How to order items in the collection",
-          "enum": ["manual", "alpha"],
+          "enum": [
+            "manual",
+            "alpha"
+          ],
           "default": "alpha"
         },
         "show_badge": {
