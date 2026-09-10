@@ -106,3 +106,11 @@ Line 130, Col 1: Unclosed multiline comment block (/* ... */).
 Line 64, Col 13: Unclosed opening delimiter '{'.
 ```
 **CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on .github/workflows/validate-agentic-workflows-pr.yml.
+
+### ❌ [2026-09-10] .gitignore `source: mutation-cycle`
+**Symptom:** AST / TypeScript Compiler Validation Rejected
+**EVIDENCE (Machine-Copied Fact):**
+```
+Line 28, Col 1: Unclosed multiline comment block (/* ... */).
+```
+**CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on .gitignore.
