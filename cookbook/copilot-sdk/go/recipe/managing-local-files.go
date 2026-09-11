@@ -13,24 +13,32 @@ import (
 func main() {
 	ctx := context.Background()
 
-	// Create and start client
+	// Initialize and start client
 	client := copilot.NewClient(nil)
 	if err := client.Start(ctx); err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to start copilot client: %v", err)
 	}
-	defer client.Stop()
+	defer func() {
+		if err := client.Stop(); err != nil {
+			log.Printf("error stopping client: %v", err)
+		}
+	}()
 
-	// Create session
+	// Create session with robust configuration
 	session, err := client.CreateSession(ctx, &copilot.SessionConfig{
 		OnPermissionRequest: copilot.PermissionHandler.ApproveAll,
-		Model:               "gpt-5.4",
+		Model:               "gpt-4o",
 	})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to create session: %v", err)
 	}
-	defer session.Disconnect()
+	defer func() {
+		if err := session.Disconnect(); err != nil {
+			log.Printf("error disconnecting session: %v", err)
+		}
+	}()
 
-	// Event handler
+	// Event handler with type-safe telemetry
 	session.On(func(event copilot.SessionEvent) {
 		switch d := event.Data.(type) {
 		case *copilot.AssistantMessageData:
@@ -42,13 +50,15 @@ func main() {
 		}
 	})
 
-	// Ask Copilot to organize files
-	// Change this to your target folder
-	homeDir, _ := os.UserHomeDir()
+	// Safely resolve user home directory with error fallback
+	homeDir, err := os.UserHomeDir()
+	if err != nil {
+		log.Fatalf("failed to retrieve user home directory: %v", err)
+	}
 	targetFolder := filepath.Join(homeDir, "Downloads")
 
 	prompt := fmt.Sprintf(`
-Analyze the files in "%s" and organize them into subfolders.
+Analyze the files in "%s" and organize them into subfolders safely.
 
 1. First, list all files and their metadata
 2. Preview grouping by file extension
@@ -58,8 +68,7 @@ Analyze the files in "%s" and organize them into subfolders.
 Please confirm before moving any files.
 `, targetFolder)
 
-	_, err = session.SendAndWait(ctx, copilot.MessageOptions{Prompt: prompt})
-	if err != nil {
-		log.Fatal(err)
+	if _, err := session.SendAndWait(ctx, copilot.MessageOptions{Prompt: prompt}); err != nil {
+		log.Fatalf("failed executing session prompt: %v", err)
 	}
 }
