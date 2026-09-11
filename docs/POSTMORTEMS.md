@@ -1271,3 +1271,13 @@ Line 12, Col 25: Unclosed opening delimiter '['.
 Line 10, Col 16: Unclosed opening delimiter '{'.
 ```
 **CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on extensions/arcade-canvas/assets/ninja-runner/sounds/SoundStartLevel.m4a.
+
+### ❌ [2026-09-11] extensions/arcade-canvas/assets/ninja-runner/sounds/SoundSwim.m4a `source: mutation-cycle`
+**Symptom:** AST / TypeScript Compiler Validation Rejected
+**EVIDENCE (Machine-Copied Fact):**
+```
+Line 1, Col 734: Unexpected closing delimiter ')' with no matching opening pair.
+Line 1, Col 1163: Mismatched closing delimiter: expected matching ')' but found ']' (opened on Line 1).
+Line 1, Col 1173: Unclosed template literal string (`).
+```
+**CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on extensions/arcade-canvas/assets/ninja-runner/sounds/SoundSwim.m4a.
