@@ -13,6 +13,7 @@ Requirements:
 
 import asyncio
 from enum import Enum
+from typing import Any, Dict, Final, List, Optional, Tuple
 
 from copilot import CopilotClient, SubprocessConfig
 
@@ -37,7 +38,7 @@ class SDKErrorCategory(str, Enum):
 # Detection phrases — extend these for your domain
 # ---------------------------------------------------------------------------
 
-PERMISSION_DENIAL_PHRASES = [
+PERMISSION_DENIAL_PHRASES: Final[Tuple[str, ...]] = (
     "permission denied",
     "access denied",
     "not permitted",
@@ -45,22 +46,22 @@ PERMISSION_DENIAL_PHRASES = [
     "eacces",
     "eperm",
     "403 forbidden",
-]
+)
 
-SHELL_ERROR_PHRASES = [
+SHELL_ERROR_PHRASES: Final[Tuple[str, ...]] = (
     "command not found",
     "no such file or directory",
     "exit code",
     "errno",
     "traceback",
-]
+)
 
 
 # ---------------------------------------------------------------------------
 # Continuation messages appended to failed tool results
 # ---------------------------------------------------------------------------
 
-CONTINUATION_MESSAGES = {
+CONTINUATION_MESSAGES: Final[Dict[ToolResultCategory, str]] = {
     ToolResultCategory.SHELL_ERROR: (
         "\n\n[SYSTEM NOTE: This command encountered an error. "
         "This does NOT mean you should stop. Retry with different "
@@ -107,9 +108,9 @@ def classify_sdk_error(error_msg: str, recoverable: bool) -> SDKErrorCategory:
 # SDK Hooks
 # ---------------------------------------------------------------------------
 
-def on_post_tool_use(input_data, env):
+def on_post_tool_use(input_data: Dict[str, Any], env: Any) -> Optional[Dict[str, Any]]:
     """Append continuation hints to failed tool results."""
-    tool_name = input_data.get("toolName", "")
+    tool_name = str(input_data.get("toolName", ""))
     result = str(input_data.get("toolResult", ""))
 
     category = classify_tool_result(tool_name, result)
@@ -120,10 +121,10 @@ def on_post_tool_use(input_data, env):
     return None
 
 
-def on_error_occurred(input_data, env):
+def on_error_occurred(input_data: Dict[str, Any], env: Any) -> Dict[str, Any]:
     """Retry transient errors, skip non-recoverable ones gracefully."""
-    error_msg = input_data.get("error", "")
-    recoverable = input_data.get("recoverable", False)
+    error_msg = str(input_data.get("error", ""))
+    recoverable = bool(input_data.get("recoverable", False))
 
     category = classify_sdk_error(error_msg, recoverable)
     print(f"  [hook] SDK error -> {category.value}: {error_msg[:80]}")
@@ -140,9 +141,9 @@ def on_error_occurred(input_data, env):
 # Demo: standalone classification test
 # ---------------------------------------------------------------------------
 
-def demo_classification():
+def demo_classification() -> None:
     """Show classification working on sample outputs."""
-    samples = [
+    samples: List[Tuple[str, str]] = [
         ("bash", "ls: cannot access '/root': Permission denied"),
         ("bash", "grep: command not found"),
         ("read_file", '{"lines": ["INFO startup complete"]}'),
@@ -156,7 +157,7 @@ def demo_classification():
         print(f"  {tool:15s} | {cat.value:20s} | {output[:50]}")
     print()
 
-    error_samples = [
+    error_samples: List[Tuple[str, bool]] = [
         ("Connection timeout after 30s", True),
         ("HTTP 503 Service Unavailable", True),
         ("HTTP 404 Not Found", False),
@@ -174,7 +175,7 @@ def demo_classification():
 # Demo: wired into a real session
 # ---------------------------------------------------------------------------
 
-async def demo_with_session():
+async def demo_with_session() -> None:
     """Create a session with hooks registered (requires Copilot auth)."""
     client = CopilotClient(
         SubprocessConfig(log_level="info", use_stdio=True),
