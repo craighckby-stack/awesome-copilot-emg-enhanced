@@ -1161,3 +1161,20 @@ Line 1, Col 436: Unclosed opening delimiter '{'.
 Line 1, Col 195: Unclosed opening delimiter '('.
 ```
 **CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on extensions/arcade-canvas/assets/ninja-runner/sounds/SoundOpenDoor.m4a.
+
+### ❌ [2026-09-11] extensions/arcade-canvas/assets/ninja-runner/sounds/SoundShootDull.m4a `source: mutation-cycle`
+**Symptom:** AST / TypeScript Compiler Validation Rejected
+**EVIDENCE (Machine-Copied Fact):**
+```
+Line 1, Col 128: Unclosed single-quote string literal.
+Line 2, Col 128: Unexpected closing delimiter ')' with no matching opening pair.
+Line 2, Col 132: Unexpected closing delimiter '}' with no matching opening pair.
+Line 2, Col 147: Unexpected closing delimiter '}' with no matching opening pair.
+Line 2, Col 214: Unclosed single-quote string literal.
+Line 3, Col 9: Unexpected closing delimiter ']' with no matching opening pair.
+Line 3, Col 229: Unexpected closing delimiter '}' with no matching opening pair.
+Line 3, Col 292: Unexpected closing delimiter '}' with no matching opening pair.
+Line 3, Col 361: Unclosed single-quote string literal.
+Line 5, Col 164: Unexpected closing delimiter ']' with no matching opening pair.
+```
+**CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on extensions/arcade-canvas/assets/ninja-runner/sounds/SoundShootDull.m4a.
