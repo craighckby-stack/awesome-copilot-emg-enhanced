@@ -5,8 +5,20 @@ import com.github.copilot.sdk.*;
 import com.github.copilot.sdk.events.*;
 import com.github.copilot.sdk.json.*;
 import java.util.concurrent.ExecutionException;
+import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class ErrorHandling {
+/**
+ * Optimized and resilient error-handling recipe for Copilot SDK Java.
+ */
+public final class ErrorHandling {
+    private static final Logger LOGGER = Logger.getLogger(ErrorHandling.class.getName());
+
+    private ErrorHandling() {
+        // Prevent instantiation
+    }
+
     public static void main(String[] args) {
         try (var client = new CopilotClient()) {
             client.start().get();
@@ -16,23 +28,28 @@ public class ErrorHandling {
                     .setOnPermissionRequest(PermissionHandler.APPROVE_ALL)
                     .setModel("gpt-5")).get()) {
 
-                session.on(AssistantMessageEvent.class,
-                    msg -> System.out.println(msg.getData().content()));
+                Objects.requireNonNull(session, "Session initialization failed.");
+
+                session.on(AssistantMessageEvent.class, msg -> {
+                    if (msg != null && msg.getData() != null) {
+                        System.out.println(msg.getData().content());
+                    }
+                });
 
                 session.sendAndWait(
                     new MessageOptions().setPrompt("Hello!")).get();
             }
         } catch (ExecutionException ex) {
+            Thread.currentThread().interrupt();
             Throwable cause = ex.getCause();
             Throwable error = cause != null ? cause : ex;
-            System.err.println("Error: " + error.getMessage());
+            LOGGER.log(Level.SEVERE, "Execution error: {0}", error.getMessage());
             error.printStackTrace();
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
-            System.err.println("Interrupted: " + ex.getMessage());
-            ex.printStackTrace();
+            LOGGER.log(Level.WARNING, "Operation interrupted: {0}", ex.getMessage());
         } catch (Exception ex) {
-            System.err.println("Error: " + ex.getMessage());
+            LOGGER.log(Level.SEVERE, "Unexpected error: {0}", ex.getMessage());
             ex.printStackTrace();
         }
     }
