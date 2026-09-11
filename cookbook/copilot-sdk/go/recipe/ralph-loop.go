@@ -37,7 +37,11 @@ func ralphLoop(ctx context.Context, mode string, maxIterations int) error {
 	if err := client.Start(ctx); err != nil {
 		return fmt.Errorf("failed to start client: %w", err)
 	}
-	defer client.Stop()
+	defer func() {
+		if stopErr := client.Stop(); stopErr != nil {
+			log.Printf("failed to stop client cleanly: %v", stopErr)
+		}
+	}()
 
 	cwd, err := os.Getwd()
 	if err != nil {
@@ -56,6 +60,11 @@ func ralphLoop(ctx context.Context, mode string, maxIterations int) error {
 	}
 
 	for i := 1; i <= maxIterations; i++ {
+		// Check context cancellation before starting a new iteration
+		if err := ctx.Err(); err != nil {
+			return fmt.Errorf("loop cancelled at iteration %d: %w", i, err)
+		}
+
 		fmt.Printf("\n=== Iteration %d/%d ===\n", i, maxIterations)
 
 		session, err := client.CreateSession(ctx, &copilot.SessionConfig{
@@ -76,14 +85,16 @@ func ralphLoop(ctx context.Context, mode string, maxIterations int) error {
 			}
 		})
 
-		_, err = session.SendAndWait(ctx, copilot.MessageOptions{
+		_, sendErr := session.SendAndWait(ctx, copilot.MessageOptions{
 			Prompt: string(prompt),
 		})
+		
 		if destroyErr := session.Disconnect(); destroyErr != nil {
 			log.Printf("failed to disconnect session on iteration %d: %v", i, destroyErr)
 		}
-		if err != nil {
-			return fmt.Errorf("send failed on iteration %d: %w", i, err)
+
+		if sendErr != nil {
+			return fmt.Errorf("send failed on iteration %d: %w", i, sendErr)
 		}
 
 		fmt.Printf("\nIteration %d complete.\n", i)
@@ -100,12 +111,13 @@ func main() {
 	for _, arg := range os.Args[1:] {
 		if arg == "plan" {
 			mode = "plan"
-		} else if n, err := strconv.Atoi(arg); err == nil {
+		} else if n, err := strconv.Atoi(arg); err == nil && n > 0 {
 			maxIterations = n
 		}
 	}
 
-	if err := ralphLoop(context.Background(), mode, maxIterations); err != nil {
+	ctx := context.Background()
+	if err := ralphLoop(ctx, mode, maxIterations); err != nil {
 		log.Fatal(err)
 	}
 }
