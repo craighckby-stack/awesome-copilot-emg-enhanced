@@ -26,32 +26,37 @@ jobs:
             const prNumber = context.payload.pull_request.number;
             const staleLabels = ['awaiting-review', 'awaiting-approval', 'ready-for-review', 'rejected'];
 
-            const { data: currentLabels } = await github.rest.issues.listLabelsOnIssue({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: prNumber,
-              per_page: 100
-            });
-            const labelNames = new Set(currentLabels.map((label) => label.name));
-
-            if (!labelNames.has('approved')) {
-              await github.rest.issues.addLabels({
+            try {
+              const { data: currentLabels } = await github.rest.issues.listLabelsOnIssue({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: prNumber,
-                labels: ['approved']
+                per_page: 100
               });
-            }
+              const labelNames = new Set(currentLabels.map((label) => label.name));
 
-            for (const labelName of staleLabels) {
-              if (!labelNames.has(labelName)) {
-                continue;
+              if (!labelNames.has('approved')) {
+                await github.rest.issues.addLabels({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: prNumber,
+                  labels: ['approved']
+                });
               }
 
-              await github.rest.issues.removeLabel({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: prNumber,
-                name: labelName
-              });
+              for (const labelName of staleLabels) {
+                if (!labelNames.has(labelName)) {
+                  continue;
+                }
+
+                await github.rest.issues.removeLabel({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: prNumber,
+                  name: labelName
+                });
+              }
+            } catch (error) {
+              console.error(`Failed to normalize labels for PR #${prNumber}:`, error);
+              setFailed(error instanceof Error ? error.message : String(error));
             }
