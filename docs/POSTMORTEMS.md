@@ -186,3 +186,11 @@ Line 43, Col 8: Property declaration is missing its type annotation.
 Line 50, Col 8: Property declaration is missing its type annotation.
 ```
 **CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on eng/generate-open-pr-report.mjs.
+
+### ❌ [2026-09-11] eng/materialize-plugins.test.mjs `source: mutation-cycle`
+**Symptom:** AST / TypeScript Compiler Validation Rejected
+**EVIDENCE (Machine-Copied Fact):**
+```
+Line 17, Col 1: '}' expected.
+```
+**CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on eng/materialize-plugins.test.mjs.
