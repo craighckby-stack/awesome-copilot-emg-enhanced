@@ -2,6 +2,12 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { inlineCode } from "./markdown.mjs";
 
+/**
+ * Test suite for Markdown inline code formatting utilities.
+ * Ensures strict compliance with CommonMark/GFM specs regarding code spans,
+ * backtick padding, whitespace collapsing, and truncation constraints.
+ */
+
 test("inlineCode wraps plain values in a single-backtick code span", () => {
   assert.equal(inlineCode("plain value"), "`plain value`");
 });
