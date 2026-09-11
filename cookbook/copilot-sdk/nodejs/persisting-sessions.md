@@ -1,12 +1,12 @@
 # Session Persistence and Resumption
 
-Save and restore conversation sessions across application restarts.
+Save and restore conversation sessions across application restarts using the GitHub Copilot SDK.
 
-## Example scenario
+## Example Scenario
 
 You want users to be able to continue a conversation even after closing and reopening your application.
 
-> **Runnable example:** [recipe/persisting-sessions.ts](recipe/persisting-sessions.ts)
+> **Runnable Example:** [recipe/persisting-sessions.ts](recipe/persisting-sessions.ts)
 >
 > ```bash
 > cd recipe && npm install
@@ -14,15 +14,16 @@ You want users to be able to continue a conversation even after closing and reop
 > # or: npm run persisting-sessions
 > ```
 
-### Creating a session with a custom ID
+### Creating a Session with a Custom ID
 
 ```typescript
 import { CopilotClient, approveAll } from "@github/copilot-sdk";
 
+// Initialize and start the Copilot client
 const client = new CopilotClient();
 await client.start();
 
-// Create session with a memorable ID
+// Create session with a memorable ID and model selection
 const session = await client.createSession({
     onPermissionRequest: approveAll,
     sessionId: "user-123-conversation",
@@ -31,52 +32,71 @@ const session = await client.createSession({
 
 await session.sendAndWait({ prompt: "Let's discuss TypeScript generics" });
 
-// Session ID is preserved
+// Session ID is preserved and logged
 console.log(session.sessionId); // "user-123-conversation"
 
-// Destroy session but keep data on disk
+// Destroy session instance in memory but keep data persisted on disk
 await session.destroy();
 await client.stop();
 ```
 
-### Resuming a session
+### Resuming an Existing Session
 
 ```typescript
+import { CopilotClient, approveAll } from "@github/copilot-sdk";
+
 const client = new CopilotClient();
 await client.start();
 
-// Resume the previous session
-const session = await client.resumeSession("user-123-conversation", { onPermissionRequest: approveAll });
+// Resume the previous session from disk
+const session = await client.resumeSession("user-123-conversation", { 
+    onPermissionRequest: approveAll 
+});
 
-// Previous context is restored
+// Previous conversation context is fully restored
 await session.sendAndWait({ prompt: "What were we discussing?" });
-// AI remembers the TypeScript generics discussion
+// AI successfully remembers the TypeScript generics discussion
 
 await session.destroy();
 await client.stop();
 ```
 
-### Listing available sessions
+### Listing Available Sessions
 
 ```typescript
+import { CopilotClient } from "@github/copilot-sdk";
+
+const client = new CopilotClient();
+await client.start();
+
+// Retrieve all stored sessions
 const sessions = await client.listSessions();
 console.log(sessions);
 // [
 //   { sessionId: "user-123-conversation", ... },
 //   { sessionId: "user-456-conversation", ... },
 // ]
+
+await client.stop();
 ```
 
-### Deleting a session permanently
+### Deleting a Session Permanently
 
 ```typescript
-// Remove session and all its data from disk
+import { CopilotClient } from "@github/copilot-sdk";
+
+const client = new CopilotClient();
+await client.start();
+
+// Remove session and all associated data from disk storage
 await client.deleteSession("user-123-conversation");
+
+await client.stop();
 ```
 
-## Getting session history
+## Retrieving Session History
 
-Retrieve all messages from a session:
+Inspect all prior messages recorded within an active session:
 
 ```typescript
 const messages = await session.getMessages();
@@ -85,8 +105,8 @@ for (const msg of messages) {
 }
 ```
 
-## Best practices
+## Best Practices
 
-1. **Use meaningful session IDs**: Include user ID or context in the session ID
-2. **Handle missing sessions**: Check if a session exists before resuming
-3. **Clean up old sessions**: Periodically delete sessions that are no longer needed
+1. **Use Meaningful Session IDs**: Include explicit user identifiers or context namespaces in the session ID.
+2. **Handle Missing Sessions**: Verify session existence or gracefully handle exceptions when attempting to resume non-existent sessions.
+3. **Clean Up Old Sessions**: Periodically purge outdated or unreferenced sessions to manage disk space efficiently.
