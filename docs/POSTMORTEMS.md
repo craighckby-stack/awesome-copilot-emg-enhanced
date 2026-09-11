@@ -870,3 +870,29 @@ Line 2, Col 508: Unclosed opening delimiter '['.
 Line 1, Col 66: Unclosed opening delimiter '('.
 ```
 **CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on extensions/arcade-canvas/assets/ninja-runner/sounds/SoundHurryUp.m4a.
+
+### ❌ [2026-09-11] extensions/arcade-canvas/assets/ninja-runner/sounds/SoundJump1.m4a `source: mutation-cycle`
+**Symptom:** AST / TypeScript Compiler Validation Rejected
+**EVIDENCE (Machine-Copied Fact):**
+```
+Line 1, Col 135: Unexpected closing delimiter ']' with no matching opening pair.
+Line 2, Col 16: Unclosed double-quote string literal.
+Line 3, Col 256: Mismatched closing delimiter: expected matching ')' but found '}' (opened on Line 1).
+Line 3, Col 445: Unclosed double-quote string literal.
+Line 5, Col 140: Mismatched closing delimiter: expected matching '}' but found ']' (opened on Line 5).
+Line 7, Col 259: Mismatched closing delimiter: expected matching ')' but found ']' (opened on Line 5).
+Line 8, Col 56: Mismatched closing delimiter: expected matching ')' but found '}' (opened on Line 1).
+Line 8, Col 142: Unexpected closing delimiter '}' with no matching opening pair.
+Line 8, Col 698: Mismatched closing delimiter: expected matching ']' but found '}' (opened on Line 8).
+Line 8, Col 715: Unexpected closing delimiter ']' with no matching opening pair.
+Line 8, Col 783: Unclosed single-quote string literal.
+Line 9, Col 54: Unexpected closing delimiter ']' with no matching opening pair.
+Line 13, Col 279: Mismatched closing delimiter: expected matching ']' but found '}' (opened on Line 13).
+Line 13, Col 310: Mismatched closing delimiter: expected matching ')' but found ']' (opened on Line 9).
+Line 13, Col 449: Unclosed single-quote string literal.
+Line 15, Col 136: Unclosed opening delimiter '['.
+Line 13, Col 418: Unclosed opening delimiter '{'.
+Line 13, Col 368: Unclosed opening delimiter '{'.
+Line 9, Col 91: Unclosed opening delimiter '{'.
+```
+**CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on extensions/arcade-canvas/assets/ninja-runner/sounds/SoundJump1.m4a.
