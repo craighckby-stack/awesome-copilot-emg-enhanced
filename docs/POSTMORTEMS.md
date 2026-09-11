@@ -932,3 +932,26 @@ Line 3, Col 329: Unclosed opening delimiter '('.
 Line 1, Col 462: Unclosed opening delimiter '['.
 ```
 **CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on extensions/arcade-canvas/assets/ninja-runner/sounds/SoundJump2.m4a.
+
+### ❌ [2026-09-11] extensions/arcade-canvas/assets/ninja-runner/sounds/SoundJumpHah.m4a `source: mutation-cycle`
+**Symptom:** AST / TypeScript Compiler Validation Rejected
+**EVIDENCE (Machine-Copied Fact):**
+```
+Line 3, Col 5: Unexpected closing delimiter ')' with no matching opening pair.
+Line 3, Col 12: Unexpected closing delimiter ')' with no matching opening pair.
+Line 3, Col 98: Mismatched closing delimiter: expected matching ')' but found '}' (opened on Line 3).
+Line 3, Col 420: Unclosed double-quote string literal.
+Line 4, Col 34: Mismatched closing delimiter: expected matching '}' but found ')' (opened on Line 4).
+Line 5, Col 102: Unexpected closing delimiter ')' with no matching opening pair.
+Line 5, Col 130: Unclosed double-quote string literal.
+Line 9, Col 460: Mismatched closing delimiter: expected matching ')' but found ']' (opened on Line 9).
+Line 9, Col 472: Mismatched closing delimiter: expected matching ')' but found ']' (opened on Line 9).
+Line 9, Col 492: Unclosed double-quote string literal.
+Line 12, Col 50: Mismatched closing delimiter: expected matching ')' but found '}' (opened on Line 9).
+Line 12, Col 142: Unexpected closing delimiter ')' with no matching opening pair.
+Line 12, Col 165: Unclosed double-quote string literal.
+Line 13, Col 978: Unclosed opening delimiter '['.
+Line 13, Col 311: Unclosed opening delimiter '['.
+Line 12, Col 144: Unclosed opening delimiter '{'.
+```
+**CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on extensions/arcade-canvas/assets/ninja-runner/sounds/SoundJumpHah.m4a.
