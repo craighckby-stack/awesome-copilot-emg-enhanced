@@ -89,8 +89,8 @@ function pluginsMatch(left, right) {
     return true;
   }
 
-  const repoMatches = leftRepo && rightRepo && leftRepo === rightRepo;
-  const repositoryMatches = leftRepository && rightRepository && leftRepository === rightRepository;
+  const repoMatches = Boolean(leftRepo && rightRepo && leftRepo === rightRepo);
+  const repositoryMatches = Boolean(leftRepository && rightRepository && leftRepository === rightRepository);
   const pathKnown = Boolean(leftPath || rightPath);
   const pathMatches = leftPath === rightPath;
 
@@ -135,7 +135,7 @@ export function upsertExternalPlugin(plugin, { filePath = EXTERNAL_PLUGINS_FILE 
 
   const changed = JSON.stringify(updatedPlugins) !== JSON.stringify(plugins);
   if (changed) {
-    fs.writeFileSync(filePath, `${JSON.stringify(updatedPlugins, null, 2)}\n`);
+    fs.writeFileSync(filePath, `${JSON.stringify(updatedPlugins, null, 2)}\n`, "utf8");
   }
 
   return {
@@ -150,7 +150,7 @@ function readCliArgs(argv) {
 
   for (let index = 0; index < argv.length; index += 1) {
     const key = argv[index];
-    if (!key.startsWith("--")) {
+    if (!key || !key.startsWith("--")) {
       continue;
     }
 
