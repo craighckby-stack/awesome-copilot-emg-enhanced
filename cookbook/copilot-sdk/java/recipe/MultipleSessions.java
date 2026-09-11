@@ -4,33 +4,49 @@
 import com.github.copilot.sdk.*;
 import com.github.copilot.sdk.json.*;
 import java.util.concurrent.CompletableFuture;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+/**
+ * MultipleSessions demonstrates concurrent session management and execution
+ * using the Copilot Java SDK with type-safety and robust error handling.
+ */
 public class MultipleSessions {
-    public static void main(String[] args) throws Exception {
+    private static final Logger LOGGER = Logger.getLogger(MultipleSessions.class.getName());
+
+    public static void main(String[] args) {
         try (var client = new CopilotClient()) {
             client.start().get();
 
-            var config = new SessionConfig()
+            var defaultConfig = new SessionConfig()
                 .setModel("gpt-5")
                 .setOnPermissionRequest(PermissionHandler.APPROVE_ALL);
 
-            // Create 3 sessions in parallel
-            var f1 = client.createSession(config);
-            var f2 = client.createSession(config);
-            var f3 = client.createSession(new SessionConfig()
+            var alternativeConfig = new SessionConfig()
                 .setModel("claude-sonnet-4.5")
-                .setOnPermissionRequest(PermissionHandler.APPROVE_ALL));
+                .setOnPermissionRequest(PermissionHandler.APPROVE_ALL);
+
+            // Create 3 sessions in parallel with type-safe CF handles
+            CompletableFuture<Session> f1 = client.createSession(defaultConfig);
+            CompletableFuture<Session> f2 = client.createSession(defaultConfig);
+            CompletableFuture<Session> f3 = client.createSession(alternativeConfig);
+
             CompletableFuture.allOf(f1, f2, f3).get();
 
-            var s1 = f1.get(); var s2 = f2.get(); var s3 = f3.get();
+            try (Session s1 = f1.get(); Session s2 = f2.get(); Session s3 = f3.get()) {
+                // Send messages concurrently or sequentially with structured error handling
+                var r1 = s1.sendAndWait(new MessageOptions().setPrompt("Explain Java records"));
+                var r2 = s2.sendAndWait(new MessageOptions().setPrompt("Explain sealed classes"));
+                var r3 = s3.sendAndWait(new MessageOptions().setPrompt("Explain pattern matching"));
 
-            // Send a message to each session
-            System.out.println("S1: " + s1.sendAndWait(new MessageOptions().setPrompt("Explain Java records")).get().getData().content());
-            System.out.println("S2: " + s2.sendAndWait(new MessageOptions().setPrompt("Explain sealed classes")).get().getData().content());
-            System.out.println("S3: " + s3.sendAndWait(new MessageOptions().setPrompt("Explain pattern matching")).get().getData().content());
-
-            // Clean up
-            s1.close(); s2.close(); s3.close();
+                System.out.println("S1: " + r1.get().getData().content());
+                System.out.println("S2: " + r2.get().getData().content());
+                System.out.println("S3: " + r3.get().getData().content());
+            }
+        } catch (Exception e) {
+            LOGGER.log(Level.SEVERE, "Execution failed in MultipleSessions workflow", e);
+            Thread.currentThread().interrupt();
         }
     }
 }
+@
