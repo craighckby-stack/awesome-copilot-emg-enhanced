@@ -507,3 +507,42 @@ Line 5, Col 199: Unclosed opening delimiter '('.
 Line 5, Col 190: Unclosed opening delimiter '['.
 ```
 **CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on extensions/arcade-canvas/assets/ninja-runner/sounds/SoundEnemyHit.m4a.
+
+### ❌ [2026-09-11] extensions/arcade-canvas/assets/ninja-runner/sounds/SoundEnemyShot.m4a `source: mutation-cycle`
+**Symptom:** AST / TypeScript Compiler Validation Rejected
+**EVIDENCE (Machine-Copied Fact):**
+```
+Line 3, Col 170: Unclosed single-quote string literal.
+Line 4, Col 95: Mismatched closing delimiter: expected matching '}' but found ']' (opened on Line 4).
+Line 4, Col 133: Mismatched closing delimiter: expected matching '}' but found ')' (opened on Line 4).
+Line 4, Col 178: Mismatched closing delimiter: expected matching '}' but found ')' (opened on Line 4).
+Line 4, Col 427: Mismatched closing delimiter: expected matching '}' but found ']' (opened on Line 4).
+Line 4, Col 462: Unclosed double-quote string literal.
+Line 5, Col 84: Mismatched closing delimiter: expected matching ')' but found ']' (opened on Line 5).
+Line 8, Col 141: Mismatched closing delimiter: expected matching '}' but found ']' (opened on Line 8).
+Line 8, Col 175: Mismatched closing delimiter: expected matching ')' but found ']' (opened on Line 8).
+Line 9, Col 100: Unclosed double-quote string literal.
+Line 10, Col 284: Mismatched closing delimiter: expected matching '}' but found ')' (opened on Line 10).
+Line 11, Col 45: Mismatched closing delimiter: expected matching ')' but found '}' (opened on Line 10).
+Line 11, Col 102: Mismatched closing delimiter: expected matching ']' but found ')' (opened on Line 11).
+Line 13, Col 88: Mismatched closing delimiter: expected matching ']' but found '}' (opened on Line 11).
+Line 13, Col 595: Mismatched closing delimiter: expected matching '}' but found ']' (opened on Line 11).
+Line 10, Col 502: Unclosed opening delimiter '('.
+Line 10, Col 73: Unclosed opening delimiter '{'.
+Line 8, Col 203: Unclosed opening delimiter '['.
+Line 8, Col 189: Unclosed opening delimiter '{'.
+Line 6, Col 80: Unclosed opening delimiter '('.
+Line 6, Col 52: Unclosed opening delimiter '['.
+Line 6, Col 13: Unclosed opening delimiter '{'.
+Line 5, Col 39: Unclosed opening delimiter '['.
+Line 4, Col 99: Unclosed opening delimiter '{'.
+Line 4, Col 29: Unclosed opening delimiter '('.
+Line 3, Col 141: Unclosed opening delimiter '['.
+Line 2, Col 240: Unclosed opening delimiter '('.
+Line 2, Col 116: Unclosed opening delimiter '('.
+Line 2, Col 68: Unclosed opening delimiter '('.
+Line 1, Col 240: Unclosed opening delimiter '('.
+Line 1, Col 116: Unclosed opening delimiter '('.
+Line 1, Col 68: Unclosed opening delimiter '('.
+```
+**CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on extensions/arcade-canvas/assets/ninja-runner/sounds/SoundEnemyShot.m4a.
