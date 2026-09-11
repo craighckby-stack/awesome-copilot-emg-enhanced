@@ -114,3 +114,11 @@ Line 64, Col 13: Unclosed opening delimiter '{'.
 Line 28, Col 1: Unclosed multiline comment block (/* ... */).
 ```
 **CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on .gitignore.
+
+### ❌ [2026-09-11] .vscode/settings.json `source: mutation-cycle`
+**Symptom:** AST / TypeScript Compiler Validation Rejected
+**EVIDENCE (Machine-Copied Fact):**
+```
+Line 20, Col 3: JSON syntax error: Expected double-quoted property name in JSON at position 507 (line 20 column 3)
+```
+**CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on .vscode/settings.json.
