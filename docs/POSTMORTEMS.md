@@ -617,3 +617,36 @@ Line 55, Col 638: Unclosed opening delimiter '['.
 Line 53, Col 370: Unclosed opening delimiter '['.
 ```
 **CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on extensions/arcade-canvas/assets/ninja-runner/sounds/SoundFallDull.m4a.
+
+### ❌ [2026-09-11] extensions/arcade-canvas/assets/ninja-runner/sounds/SoundFallLoud.m4a `source: mutation-cycle`
+**Symptom:** AST / TypeScript Compiler Validation Rejected
+**EVIDENCE (Machine-Copied Fact):**
+```
+Line 1, Col 92: Unexpected closing delimiter '}' with no matching opening pair.
+Line 1, Col 253: Mismatched closing delimiter: expected matching ']' but found ')' (opened on Line 1).
+Line 1, Col 287: Unclosed double-quote string literal.
+Line 3, Col 2: Mismatched closing delimiter: expected matching '}' but found ']' (opened on Line 2).
+Line 3, Col 22: Unexpected closing delimiter '}' with no matching opening pair.
+Line 5, Col 77: Unclosed double-quote string literal.
+Line 8, Col 7: Mismatched closing delimiter: expected matching ']' but found '}' (opened on Line 7).
+Line 8, Col 71: Mismatched closing delimiter: expected matching ']' but found '}' (opened on Line 8).
+Line 8, Col 82: Unclosed single-quote string literal.
+Line 14, Col 229: Unclosed single-quote string literal.
+Line 17, Col 46: Unclosed double-quote string literal.
+Line 20, Col 43: Mismatched closing delimiter: expected matching ']' but found '}' (opened on Line 19).
+Line 21, Col 23: Mismatched closing delimiter: expected matching '}' but found ']' (opened on Line 15).
+Line 21, Col 32: Mismatched closing delimiter: expected matching ')' but found ']' (opened on Line 3).
+Line 21, Col 53: Unexpected closing delimiter ']' with no matching opening pair.
+Line 21, Col 80: Unexpected closing delimiter ')' with no matching opening pair.
+Line 21, Col 174: Unexpected closing delimiter ']' with no matching opening pair.
+Line 21, Col 187: Unexpected closing delimiter '}' with no matching opening pair.
+Line 22, Col 49: Mismatched closing delimiter: expected matching ')' but found '}' (opened on Line 21).
+Line 22, Col 50: Mismatched closing delimiter: expected matching ']' but found '}' (opened on Line 21).
+Line 23, Col 99: Unclosed double-quote string literal.
+Line 25, Col 248: Unclosed double-quote string literal.
+Line 26, Col 157: Unclosed template literal string (`).
+Line 23, Col 61: Unclosed opening delimiter '{'.
+Line 22, Col 61: Unclosed opening delimiter '('.
+Line 21, Col 250: Unclosed opening delimiter '['.
+```
+**CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on extensions/arcade-canvas/assets/ninja-runner/sounds/SoundFallLoud.m4a.
