@@ -695,3 +695,140 @@ Line 4, Col 152: Unexpected closing delimiter ']' with no matching opening pair.
 Line 5, Col 64: Unclosed double-quote string literal.
 ```
 **CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on extensions/arcade-canvas/assets/ninja-runner/sounds/SoundFlapLight.m4a.
+
+### ❌ [2026-09-11] extensions/arcade-canvas/assets/ninja-runner/sounds/SoundGameOver.m4a `source: mutation-cycle`
+**Symptom:** AST / TypeScript Compiler Validation Rejected
+**EVIDENCE (Machine-Copied Fact):**
+```
+Line 1, Col 68: Mismatched closing delimiter: expected matching ')' but found ']' (opened on Line 1).
+Line 1, Col 77: Unexpected closing delimiter ']' with no matching opening pair.
+Line 1, Col 98: Unclosed double-quote string literal.
+Line 4, Col 43: Unclosed single-quote string literal.
+Line 5, Col 187: Mismatched closing delimiter: expected matching ']' but found '}' (opened on Line 5).
+Line 5, Col 247: Mismatched closing delimiter: expected matching ']' but found '}' (opened on Line 5).
+Line 7, Col 22: Mismatched closing delimiter: expected matching '}' but found ')' (opened on Line 7).
+Line 7, Col 337: Mismatched closing delimiter: expected matching ')' but found ']' (opened on Line 6).
+Line 7, Col 408: Mismatched closing delimiter: expected matching '}' but found ']' (opened on Line 7).
+Line 9, Col 19: Unclosed double-quote string literal.
+Line 11, Col 308: Mismatched closing delimiter: expected matching '}' but found ']' (opened on Line 11).
+Line 12, Col 14: Unclosed single-quote string literal.
+Line 13, Col 202: Unclosed double-quote string literal.
+Line 14, Col 63: Mismatched closing delimiter: expected matching ']' but found ')' (opened on Line 13).
+Line 14, Col 101: Mismatched closing delimiter: expected matching ']' but found ')' (opened on Line 14).
+Line 15, Col 5: Mismatched closing delimiter: expected matching '}' but found ')' (opened on Line 1).
+Line 16, Col 53: Unexpected closing delimiter '}' with no matching opening pair.
+Line 16, Col 62: Unexpected closing delimiter '}' with no matching opening pair.
+Line 19, Col 36: Mismatched closing delimiter: expected matching '}' but found ')' (opened on Line 16).
+Line 19, Col 161: Unexpected closing delimiter ')' with no matching opening pair.
+Line 20, Col 9: Unexpected closing delimiter ')' with no matching opening pair.
+Line 21, Col 75: Unexpected closing delimiter '}' with no matching opening pair.
+Line 21, Col 355: Unclosed single-quote string literal.
+Line 23, Col 60: Mismatched closing delimiter: expected matching ']' but found '}' (opened on Line 22).
+Line 23, Col 101: Unexpected closing delimiter ']' with no matching opening pair.
+Line 23, Col 212: Mismatched closing delimiter: expected matching '}' but found ')' (opened on Line 23).
+Line 24, Col 100: Mismatched closing delimiter: expected matching '}' but found ']' (opened on Line 23).
+Line 28, Col 338: Mismatched closing delimiter: expected matching ')' but found ']' (opened on Line 28).
+Line 28, Col 361: Mismatched closing delimiter: expected matching '}' but found ')' (opened on Line 28).
+Line 28, Col 425: Unexpected closing delimiter ')' with no matching opening pair.
+Line 30, Col 247: Unexpected closing delimiter ')' with no matching opening pair.
+Line 30, Col 269: Unclosed double-quote string literal.
+Line 31, Col 45: Unclosed single-quote string literal.
+Line 33, Col 26: Unclosed single-quote string literal.
+Line 34, Col 331: Unclosed single-quote string literal.
+Line 35, Col 15: Mismatched closing delimiter: expected matching ']' but found ')' (opened on Line 31).
+Line 35, Col 51: Unexpected closing delimiter ')' with no matching opening pair.
+Line 35, Col 92: Mismatched closing delimiter: expected matching '}' but found ']' (opened on Line 35).
+Line 35, Col 107: Mismatched closing delimiter: expected matching ']' but found ')' (opened on Line 35).
+Line 35, Col 121: Unclosed single-quote string literal.
+Line 36, Col 12: Unclosed double-quote string literal.
+Line 37, Col 84: Mismatched closing delimiter: expected matching ']' but found ')' (opened on Line 35).
+Line 37, Col 86: Mismatched closing delimiter: expected matching '}' but found ']' (opened on Line 35).
+Line 37, Col 111: Unexpected closing delimiter ')' with no matching opening pair.
+Line 37, Col 127: Unexpected closing delimiter ')' with no matching opening pair.
+Line 37, Col 158: Unexpected closing delimiter ']' with no matching opening pair.
+Line 37, Col 209: Unexpected closing delimiter '}' with no matching opening pair.
+Line 37, Col 261: Unclosed double-quote string literal.
+Line 38, Col 29: Mismatched closing delimiter: expected matching ')' but found ']' (opened on Line 37).
+Line 38, Col 72: Mismatched closing delimiter: expected matching '}' but found ']' (opened on Line 37).
+Line 38, Col 124: Unexpected closing delimiter ']' with no matching opening pair.
+Line 38, Col 126: Unclosed double-quote string literal.
+Line 39, Col 18: Unclosed single-quote string literal.
+Line 40, Col 98: Mismatched closing delimiter: expected matching '}' but found ')' (opened on Line 39).
+Line 40, Col 102: Unclosed single-quote string literal.
+Line 42, Col 27: Mismatched closing delimiter: expected matching '}' but found ']' (opened on Line 42).
+Line 42, Col 32: Unexpected closing delimiter ')' with no matching opening pair.
+Line 45, Col 88: Mismatched closing delimiter: expected matching ']' but found '}' (opened on Line 45).
+Line 45, Col 131: Unclosed double-quote string literal.
+Line 46, Col 61: Mismatched closing delimiter: expected matching ')' but found ']' (opened on Line 46).
+Line 46, Col 87: Unclosed double-quote string literal.
+Line 48, Col 163: Unclosed single-quote string literal.
+Line 49, Col 29: Mismatched closing delimiter: expected matching ']' but found '}' (opened on Line 48).
+Line 49, Col 47: Mismatched closing delimiter: expected matching ')' but found '}' (opened on Line 48).
+Line 49, Col 695: Mismatched closing delimiter: expected matching ']' but found ')' (opened on Line 47).
+Line 49, Col 721: Mismatched closing delimiter: expected matching ')' but found ']' (opened on Line 49).
+Line 49, Col 1022: Mismatched closing delimiter: expected matching '}' but found ']' (opened on Line 47).
+Line 49, Col 1171: Mismatched closing delimiter: expected matching ')' but found ']' (opened on Line 49).
+Line 49, Col 1199: Mismatched closing delimiter: expected matching ')' but found ']' (opened on Line 49).
+Line 49, Col 1292: Mismatched closing delimiter: expected matching '}' but found ')' (opened on Line 49).
+Line 50, Col 94: Mismatched closing delimiter: expected matching ']' but found ')' (opened on Line 50).
+Line 50, Col 463: Mismatched closing delimiter: expected matching '}' but found ')' (opened on Line 49).
+Line 50, Col 608: Mismatched closing delimiter: expected matching '}' but found ')' (opened on Line 50).
+Line 50, Col 672: Unclosed single-quote string literal.
+Line 53, Col 190: Unclosed double-quote string literal.
+Line 54, Col 50: Mismatched closing delimiter: expected matching ']' but found '}' (opened on Line 47).
+Line 54, Col 86: Unclosed double-quote string literal.
+Line 55, Col 41: Mismatched closing delimiter: expected matching ')' but found '}' (opened on Line 54).
+Line 56, Col 513: Mismatched closing delimiter: expected matching ']' but found ')' (opened on Line 56).
+Line 56, Col 526: Mismatched closing delimiter: expected matching '}' but found ')' (opened on Line 55).
+Line 57, Col 434: Unclosed double-quote string literal.
+Line 61, Col 157: Unclosed double-quote string literal.
+Line 62, Col 74: Mismatched closing delimiter: expected matching ')' but found '}' (opened on Line 62).
+Line 62, Col 125: Mismatched closing delimiter: expected matching ']' but found ')' (opened on Line 62).
+Line 63, Col 188: Mismatched closing delimiter: expected matching ']' but found '}' (opened on Line 63).
+Line 63, Col 306: Mismatched closing delimiter: expected matching ']' but found '}' (opened on Line 63).
+Line 63, Col 319: Mismatched closing delimiter: expected matching ')' but found '}' (opened on Line 63).
+Line 63, Col 501: Mismatched closing delimiter: expected matching ')' but found '}' (opened on Line 63).
+Line 63, Col 565: Unclosed double-quote string literal.
+Line 64, Col 416: Unclosed single-quote string literal.
+Line 65, Col 9: Mismatched closing delimiter: expected matching ')' but found ']' (opened on Line 64).
+Line 65, Col 182: Mismatched closing delimiter: expected matching '}' but found ')' (opened on Line 65).
+Line 65, Col 200: Mismatched closing delimiter: expected matching ')' but found '}' (opened on Line 65).
+Line 65, Col 489: Mismatched closing delimiter: expected matching '}' but found ']' (opened on Line 65).
+Line 65, Col 630: Unclosed double-quote string literal.
+Line 66, Col 95: Mismatched closing delimiter: expected matching '}' but found ']' (opened on Line 66).
+Line 67, Col 130: Mismatched closing delimiter: expected matching '}' but found ']' (opened on Line 67).
+Line 67, Col 169: Unclosed double-quote string literal.
+Line 69, Col 9: Unclosed single-quote string literal.
+Line 70, Col 186: Mismatched closing delimiter: expected matching '}' but found ']' (opened on Line 70).
+Line 70, Col 206: Unclosed single-quote string literal.
+Line 71, Col 53: Mismatched closing delimiter: expected matching ']' but found ')' (opened on Line 68).
+Line 71, Col 68: Unclosed single-quote string literal.
+Line 74, Col 35: Mismatched closing delimiter: expected matching '}' but found ']' (opened on Line 68).
+Line 74, Col 247: Unclosed single-quote string literal.
+Line 75, Col 336: Unclosed single-quote string literal.
+Line 76, Col 11: Mismatched closing delimiter: expected matching '}' but found ')' (opened on Line 76).
+Line 77, Col 35: Mismatched closing delimiter: expected matching '}' but found ')' (opened on Line 77).
+Line 77, Col 158: Mismatched closing delimiter: expected matching ']' but found '}' (opened on Line 77).
+Line 77, Col 159: Mismatched closing delimiter: expected matching ')' but found ']' (opened on Line 75).
+Line 77, Col 176: Mismatched closing delimiter: expected matching ')' but found '}' (opened on Line 75).
+Line 77, Col 256: Mismatched closing delimiter: expected matching '}' but found ')' (opened on Line 77).
+Line 77, Col 279: Mismatched closing delimiter: expected matching '}' but found ']' (opened on Line 75).
+Line 77, Col 339: Mismatched closing delimiter: expected matching ']' but found ')' (opened on Line 66).
+Line 78, Col 235: Mismatched closing delimiter: expected matching '}' but found ')' (opened on Line 78).
+Line 78, Col 253: Unclosed single-quote string literal.
+Line 82, Col 185: Unclosed double-quote string literal.
+Line 84, Col 232: Mismatched closing delimiter: expected matching ']' but found '}' (opened on Line 77).
+Line 85, Col 190: Mismatched closing delimiter: expected matching ']' but found ')' (opened on Line 84).
+Line 85, Col 757: Mismatched closing delimiter: expected matching ']' but found '}' (opened on Line 65).
+Line 85, Col 825: Mismatched closing delimiter: expected matching ']' but found '}' (opened on Line 64).
+Line 64, Col 207: Unclosed opening delimiter '{'.
+Line 64, Col 116: Unclosed opening delimiter '('.
+Line 64, Col 71: Unclosed opening delimiter '('.
+Line 63, Col 547: Unclosed opening delimiter '('.
+Line 63, Col 27: Unclosed opening delimiter '['.
+Line 62, Col 126: Unclosed opening delimiter '('.
+Line 62, Col 90: Unclosed opening delimiter '['.
+Line 45, Col 115: Unclosed opening delimiter '('.
+Line 45, Col 102: Unclosed opening delimiter '{'.
+```
+**CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on extensions/arcade-canvas/assets/ninja-runner/sounds/SoundGameOver.m4a.
