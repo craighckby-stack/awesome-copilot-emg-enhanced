@@ -1193,3 +1193,28 @@ Line 4, Col 216: Mismatched closing delimiter: expected matching ']' but found '
 Line 3, Col 391: Unclosed opening delimiter '{'.
 ```
 **CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on extensions/arcade-canvas/assets/ninja-runner/sounds/SoundShootRegular.m4a.
+
+### ❌ [2026-09-11] extensions/arcade-canvas/assets/ninja-runner/sounds/SoundSlide.m4a `source: mutation-cycle`
+**Symptom:** AST / TypeScript Compiler Validation Rejected
+**EVIDENCE (Machine-Copied Fact):**
+```
+Line 1, Col 158: Unexpected closing delimiter ']' with no matching opening pair.
+Line 1, Col 330: Mismatched closing delimiter: expected matching ']' but found '}' (opened on Line 1).
+Line 2, Col 183: Mismatched closing delimiter: expected matching ']' but found ')' (opened on Line 1).
+Line 2, Col 596: Mismatched closing delimiter: expected matching ']' but found '}' (opened on Line 2).
+Line 2, Col 678: Mismatched closing delimiter: expected matching ')' but found ']' (opened on Line 2).
+Line 3, Col 84: Mismatched closing delimiter: expected matching ']' but found ')' (opened on Line 3).
+Line 3, Col 461: Mismatched closing delimiter: expected matching ']' but found '}' (opened on Line 3).
+Line 4, Col 336: Mismatched closing delimiter: expected matching '}' but found ']' (opened on Line 4).
+Line 5, Col 81: Unclosed single-quote string literal.
+Line 6, Col 131: Mismatched closing delimiter: expected matching ']' but found '}' (opened on Line 6).
+Line 6, Col 68: Unclosed opening delimiter '{'.
+Line 3, Col 464: Unclosed opening delimiter '['.
+Line 2, Col 553: Unclosed opening delimiter '['.
+Line 2, Col 439: Unclosed opening delimiter '('.
+Line 2, Col 315: Unclosed opening delimiter '{'.
+Line 2, Col 227: Unclosed opening delimiter '{'.
+Line 2, Col 206: Unclosed opening delimiter '{'.
+Line 1, Col 191: Unclosed opening delimiter '('.
+```
+**CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on extensions/arcade-canvas/assets/ninja-runner/sounds/SoundSlide.m4a.
