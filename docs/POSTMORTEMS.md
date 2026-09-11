@@ -210,3 +210,12 @@ Line 237, Col 7: Property declaration is missing its type annotation.
 Line 239, Col 14: Property declaration is missing its type annotation.
 ```
 **CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on eng/pr-risk-scan.mjs.
+
+### ❌ [2026-09-11] eng/yaml-parser.mjs `source: mutation-cycle`
+**Symptom:** AST / TypeScript Compiler Validation Rejected
+**EVIDENCE (Machine-Copied Fact):**
+```
+Line 91, Col 12: Property declaration is missing its type annotation.
+Line 132, Col 8: Property declaration is missing its type annotation.
+```
+**CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on eng/yaml-parser.mjs.
