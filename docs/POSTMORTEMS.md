@@ -494,3 +494,16 @@ Line 13, Col 33: Mismatched closing delimiter: expected matching ']' but found '
 Line 13, Col 40: Unclosed single-quote string literal.
 ```
 **CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on extensions/arcade-canvas/assets/ninja-runner/sounds/SoundCountdown.m4a.
+
+### ❌ [2026-09-11] extensions/arcade-canvas/assets/ninja-runner/sounds/SoundEnemyHit.m4a `source: mutation-cycle`
+**Symptom:** AST / TypeScript Compiler Validation Rejected
+**EVIDENCE (Machine-Copied Fact):**
+```
+Line 5, Col 78: Unexpected closing delimiter ')' with no matching opening pair.
+Line 5, Col 405: Unclosed double-quote string literal.
+Line 6, Col 34: Unclosed template literal string (`).
+Line 6, Col 22: Unclosed opening delimiter '['.
+Line 5, Col 199: Unclosed opening delimiter '('.
+Line 5, Col 190: Unclosed opening delimiter '['.
+```
+**CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on extensions/arcade-canvas/assets/ninja-runner/sounds/SoundEnemyHit.m4a.
