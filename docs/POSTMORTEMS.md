@@ -679,3 +679,19 @@ Line 1, Col 75: Unclosed opening delimiter '{'.
 Line 1, Col 62: Unclosed opening delimiter '('.
 ```
 **CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on extensions/arcade-canvas/assets/ninja-runner/sounds/SoundFlapHeavy.m4a.
+
+### ❌ [2026-09-11] extensions/arcade-canvas/assets/ninja-runner/sounds/SoundFlapLight.m4a `source: mutation-cycle`
+**Symptom:** AST / TypeScript Compiler Validation Rejected
+**EVIDENCE (Machine-Copied Fact):**
+```
+Line 1, Col 73: Mismatched closing delimiter: expected matching ']' but found '}' (opened on Line 1).
+Line 1, Col 75: Unexpected closing delimiter ')' with no matching opening pair.
+Line 2, Col 129: Unexpected closing delimiter ')' with no matching opening pair.
+Line 2, Col 912: Mismatched closing delimiter: expected matching '}' but found ']' (opened on Line 2).
+Line 2, Col 953: Unclosed double-quote string literal.
+Line 4, Col 75: Mismatched closing delimiter: expected matching ']' but found '}' (opened on Line 3).
+Line 4, Col 80: Mismatched closing delimiter: expected matching ']' but found ')' (opened on Line 2).
+Line 4, Col 152: Unexpected closing delimiter ']' with no matching opening pair.
+Line 5, Col 64: Unclosed double-quote string literal.
+```
+**CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on extensions/arcade-canvas/assets/ninja-runner/sounds/SoundFlapLight.m4a.
