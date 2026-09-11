@@ -157,3 +157,12 @@ Line 181, Col 7: Unclosed double-quote string literal.
 Line 76, Col 7: Property declaration is missing its type annotation.
 ```
 **CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on cookbook/copilot-sdk/nodejs/recipe/accessibility-report.ts.
+
+### ❌ [2026-09-11] eng/contributor-report.mjs `source: mutation-cycle`
+**Symptom:** AST / TypeScript Compiler Validation Rejected
+**EVIDENCE (Machine-Copied Fact):**
+```
+Line 173, Col 1: Cannot use reserved TypeScript keyword as a variable identifier.
+Line 394, Col 1: Cannot use reserved TypeScript keyword as a variable identifier.
+```
+**CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on eng/contributor-report.mjs.
