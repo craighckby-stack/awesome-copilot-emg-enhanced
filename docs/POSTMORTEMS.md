@@ -138,3 +138,14 @@ Line 173, Col 26: Unclosed single-quote string literal.
 Line 178, Col 11: Unclosed double-quote string literal.
 ```
 **CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on cookbook/copilot-sdk/dotnet/recipe/accessibility-report.cs.
+
+### ❌ [2026-09-11] cookbook/copilot-sdk/dotnet/recipe/pr-visualization.cs `source: mutation-cycle`
+**Symptom:** AST / TypeScript Compiler Validation Rejected
+**EVIDENCE (Machine-Copied Fact):**
+```
+Line 139, Col 22: Unclosed double-quote string literal.
+Line 151, Col 3: Unclosed double-quote string literal.
+Line 174, Col 17: Unclosed double-quote string literal.
+Line 181, Col 7: Unclosed double-quote string literal.
+```
+**CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on cookbook/copilot-sdk/dotnet/recipe/pr-visualization.cs.
