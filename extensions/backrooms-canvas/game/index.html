@@ -22,7 +22,7 @@
    * already listens for. It MUST run before webview.js loads.
    */
   (() => {
-    const init = __BACKROOMS_INIT__;
+    const init = window.__BACKROOMS_INIT__ || {};
     const SETTINGS_KEY = "backrooms.settings";
     const STATE_KEY = "backrooms.state";
 
@@ -50,7 +50,7 @@
     // choices, then any per-open overrides the agent requested win on top.
     function currentSettings() {
       const saved = readJson(SETTINGS_KEY) || {};
-      return { ...init.defaults, ...saved, ...(init.overrides || {}) };
+      return { ...(init.defaults || {}), ...saved, ...(init.overrides || {}) };
     }
 
     function dispatch(message) {
@@ -99,18 +99,25 @@
       const events = new EventSource("/events");
       events.addEventListener("jobStatus", (event) => {
         try {
-          dispatch({ type: "jobStatus", job: JSON.parse(event.data).job });
+          const data = JSON.parse(event.data);
+          if (data && data.job) {
+            dispatch({ type: "jobStatus", job: data.job });
+          }
         } catch {}
       });
       events.addEventListener("chatSession", (event) => {
         try {
-          dispatch({ type: "chatSession", session: JSON.parse(event.data).session });
+          const data = JSON.parse(event.data);
+          if (data && data.session) {
+            dispatch({ type: "chatSession", session: data.session });
+          }
         } catch {}
       });
       events.addEventListener("relocate", (event) => {
         let seed;
         try {
-          seed = JSON.parse(event.data).seed;
+          const data = JSON.parse(event.data);
+          seed = data ? data.seed : undefined;
         } catch {}
         dispatch({ type: "relocate", seed });
       });
