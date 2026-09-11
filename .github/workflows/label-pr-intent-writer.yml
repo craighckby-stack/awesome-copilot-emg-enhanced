@@ -39,6 +39,11 @@ jobs:
 
             const workflowRun = context.payload.workflow_run;
             const resultPath = path.join(process.env.RUNNER_TEMP, 'label-pr-intent-result', 'result.json');
+            
+            if (!fs.existsSync(resultPath)) {
+              throw new Error(`Artifact result file not found at path: ${resultPath}`);
+            }
+
             const result = JSON.parse(fs.readFileSync(resultPath, 'utf8'));
             const managedLabels = new Set([
               'skills',
