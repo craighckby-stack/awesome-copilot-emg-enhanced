@@ -1281,3 +1281,32 @@ Line 1, Col 1163: Mismatched closing delimiter: expected matching ')' but found 
 Line 1, Col 1173: Unclosed template literal string (`).
 ```
 **CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on extensions/arcade-canvas/assets/ninja-runner/sounds/SoundSwim.m4a.
+
+### ❌ [2026-09-11] extensions/arcade-canvas/game/index.html `source: mutation-cycle`
+**Symptom:** AST / TypeScript Compiler Validation Rejected
+**EVIDENCE (Machine-Copied Fact):**
+```
+Line 783, Col 19: Unclosed double-quote string literal.
+Line 785, Col 68: Unclosed double-quote string literal.
+Line 788, Col 19: Unclosed double-quote string literal.
+Line 790, Col 50: Unclosed double-quote string literal.
+Line 794, Col 19: Unclosed double-quote string literal.
+Line 796, Col 50: Unclosed double-quote string literal.
+Line 808, Col 19: Unclosed double-quote string literal.
+Line 810, Col 68: Unclosed double-quote string literal.
+Line 813, Col 19: Unclosed double-quote string literal.
+Line 815, Col 50: Unclosed double-quote string literal.
+Line 819, Col 19: Unclosed double-quote string literal.
+Line 821, Col 50: Unclosed double-quote string literal.
+Line 833, Col 19: Unclosed double-quote string literal.
+Line 835, Col 68: Unclosed double-quote string literal.
+Line 838, Col 19: Unclosed double-quote string literal.
+Line 840, Col 50: Unclosed double-quote string literal.
+Line 844, Col 19: Unclosed double-quote string literal.
+Line 846, Col 50: Unclosed double-quote string literal.
+Line 858, Col 19: Unclosed double-quote string literal.
+Line 860, Col 50: Unclosed double-quote string literal.
+Line 867, Col 19: Unclosed double-quote string literal.
+Line 869, Col 50: Unclosed double-quote string literal.
+```
+**CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on extensions/arcade-canvas/game/index.html.
