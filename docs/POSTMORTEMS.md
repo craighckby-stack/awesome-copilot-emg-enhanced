@@ -448,3 +448,32 @@ Line 1, Col 200: Unclosed opening delimiter '['.
 Line 1, Col 95: Unclosed opening delimiter '['.
 ```
 **CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on extensions/arcade-canvas/assets/ninja-runner/sounds/SoundClick.m4a.
+
+### ❌ [2026-09-11] extensions/arcade-canvas/assets/ninja-runner/sounds/SoundCoin.m4a `source: mutation-cycle`
+**Symptom:** AST / TypeScript Compiler Validation Rejected
+**EVIDENCE (Machine-Copied Fact):**
+```
+Line 5, Col 172: Unexpected closing delimiter '}' with no matching opening pair.
+Line 6, Col 31: Unclosed single-quote string literal.
+Line 9, Col 57: Mismatched closing delimiter: expected matching '}' but found ']' (opened on Line 9).
+Line 10, Col 20: Mismatched closing delimiter: expected matching ']' but found ')' (opened on Line 9).
+Line 10, Col 24: Mismatched closing delimiter: expected matching ')' but found ']' (opened on Line 7).
+Line 11, Col 7: Mismatched closing delimiter: expected matching ']' but found '}' (opened on Line 10).
+Line 11, Col 758: Mismatched closing delimiter: expected matching ']' but found '}' (opened on Line 11).
+Line 11, Col 875: Mismatched closing delimiter: expected matching ']' but found '}' (opened on Line 11).
+Line 11, Col 890: Mismatched closing delimiter: expected matching ')' but found ']' (opened on Line 11).
+Line 12, Col 118: Mismatched closing delimiter: expected matching ']' but found ')' (opened on Line 12).
+Line 12, Col 523: Unclosed single-quote string literal.
+Line 13, Col 9: Mismatched closing delimiter: expected matching ']' but found '}' (opened on Line 12).
+Line 13, Col 153: Mismatched closing delimiter: expected matching ']' but found ')' (opened on Line 13).
+Line 13, Col 158: Mismatched closing delimiter: expected matching ']' but found '}' (opened on Line 10).
+Line 13, Col 252: Mismatched closing delimiter: expected matching '}' but found ']' (opened on Line 10).
+Line 13, Col 296: Unclosed double-quote string literal.
+Line 14, Col 79: Unclosed single-quote string literal.
+Line 15, Col 38: Unclosed opening delimiter '{'.
+Line 15, Col 3: Unclosed opening delimiter '('.
+Line 13, Col 277: Unclosed opening delimiter '{'.
+Line 13, Col 266: Unclosed opening delimiter '{'.
+Line 7, Col 6: Unclosed opening delimiter '('.
+```
+**CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on extensions/arcade-canvas/assets/ninja-runner/sounds/SoundCoin.m4a.
