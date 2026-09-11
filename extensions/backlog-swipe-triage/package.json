@@ -3,8 +3,14 @@
   "version": "1.0.0",
   "type": "module",
   "main": "extension.mjs",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "dependencies": {
-    "@github/copilot-sdk": "1.0.1"
+    "@github/copilot-sdk": "^1.0.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2"
   },
   "description": "Users quickly swipe through backlog issues to triage decisions like assign, needs-info, defer, close, or ignore.",
   "keywords": [
@@ -14,5 +20,6 @@
     "github-issues",
     "agent-assignment",
     "workflow-automation"
-  ]
+  ],
+  "private": true
 }
