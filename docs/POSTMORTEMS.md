@@ -122,3 +122,19 @@ Line 28, Col 1: Unclosed multiline comment block (/* ... */).
 Line 20, Col 3: JSON syntax error: Expected double-quoted property name in JSON at position 507 (line 20 column 3)
 ```
 **CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on .vscode/settings.json.
+
+### ❌ [2026-09-11] cookbook/copilot-sdk/dotnet/recipe/accessibility-report.cs `source: mutation-cycle`
+**Symptom:** AST / TypeScript Compiler Validation Rejected
+**EVIDENCE (Machine-Copied Fact):**
+```
+Line 69, Col 17: Unclosed double-quote string literal.
+Line 81, Col 11: Unclosed single-quote string literal.
+Line 116, Col 57: Unclosed single-quote string literal.
+Line 117, Col 7: Unclosed double-quote string literal.
+Line 133, Col 33: Unclosed double-quote string literal.
+Line 140, Col 11: Unclosed double-quote string literal.
+Line 157, Col 33: Unclosed double-quote string literal.
+Line 173, Col 26: Unclosed single-quote string literal.
+Line 178, Col 11: Unclosed double-quote string literal.
+```
+**CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on cookbook/copilot-sdk/dotnet/recipe/accessibility-report.cs.
