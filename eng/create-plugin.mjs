@@ -12,12 +12,21 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
+/**
+ * Prompts user for input with a given question.
+ * @param {string} question - Question to prompt
+ * @returns {Promise<string>} User response
+ */
 function prompt(question) {
   return new Promise((resolve) => {
     rl.question(question, resolve);
   });
 }
 
+/**
+ * Parses command-line arguments.
+ * @returns {{ name: string | undefined, keywords: string | undefined }} Parsed arguments
+ */
 function parseArgs() {
   const args = process.argv.slice(2);
   const out = { name: undefined, keywords: undefined };
@@ -35,10 +44,8 @@ function parseArgs() {
     } else if (a.startsWith("--keywords=") || a.startsWith("--tags=")) {
       out.keywords = a.split("=")[1];
     } else if (!a.startsWith("-") && !out.name) {
-      // first positional -> name
       out.name = a;
     } else if (!a.startsWith("-") && out.name && !out.keywords) {
-      // second positional -> keywords
       out.keywords = a;
     }
   }
@@ -50,6 +57,10 @@ function parseArgs() {
   return out;
 }
 
+/**
+ * Main function to create a new plugin structure.
+ * @returns {Promise<void>}
+ */
 async function createPlugin() {
   try {
     console.log("🔌 Plugin Creator");
@@ -57,7 +68,6 @@ async function createPlugin() {
 
     const parsed = parseArgs();
 
-    // Get plugin ID
     let pluginId = parsed.name;
     if (!pluginId) {
       pluginId = await prompt("Plugin ID (lowercase, hyphens only): ");
@@ -77,7 +87,6 @@ async function createPlugin() {
 
     const pluginDir = path.join(PLUGINS_DIR, pluginId);
 
-    // Check if plugin already exists
     if (fs.existsSync(pluginDir)) {
       console.log(
         `⚠️  Plugin ${pluginId} already exists at ${pluginDir}`
@@ -86,7 +95,6 @@ async function createPlugin() {
       process.exit(1);
     }
 
-    // Get display name
     const defaultDisplayName = pluginId
       .split("-")
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
@@ -99,7 +107,6 @@ async function createPlugin() {
       displayName = defaultDisplayName;
     }
 
-    // Get description
     const defaultDescription = `A plugin for ${displayName.toLowerCase()}.`;
     let description = await prompt(
       `Description (default: ${defaultDescription}): `
@@ -108,7 +115,6 @@ async function createPlugin() {
       description = defaultDescription;
     }
 
-    // Get keywords
     let keywords = [];
     let keywordInput = parsed.keywords;
     if (!keywordInput) {
@@ -127,10 +133,8 @@ async function createPlugin() {
       keywords = pluginId.split("-").slice(0, 3);
     }
 
-    // Create directory structure
     fs.mkdirSync(pluginDir, { recursive: true });
 
-    // Generate plugin.json
     const pluginJson = {
       "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
       name: pluginId,
@@ -153,7 +157,6 @@ async function createPlugin() {
       JSON.stringify(pluginJson, null, 2) + "\n"
     );
 
-    // Generate README.md
     const readmeContent = `# ${displayName} Plugin
 
 ${description}
