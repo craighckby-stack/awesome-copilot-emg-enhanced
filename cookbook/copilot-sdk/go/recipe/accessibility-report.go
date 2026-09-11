@@ -19,8 +19,11 @@ func main() {
 	fmt.Println()
 
 	fmt.Print("Enter URL to analyze: ")
-	url, _ := reader.ReadString('\n')
-	url = strings.TrimSpace(url)
+	urlInput, err := reader.ReadString('\n')
+	if err != nil {
+		log.Fatalf("failed to read URL input: %v", err)
+	}
+	url := strings.TrimSpace(urlInput)
 
 	if url == "" {
 		fmt.Println("No URL provided. Exiting.")
@@ -39,9 +42,13 @@ func main() {
 	client := copilot.NewClient(nil)
 
 	if err := client.Start(ctx); err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to start copilot client: %v", err)
 	}
-	defer client.Stop()
+	defer func() {
+		if stopErr := client.Stop(); stopErr != nil {
+			log.Printf("error stopping client: %v", stopErr)
+		}
+	}()
 
 	session, err := client.CreateSession(ctx, &copilot.SessionConfig{
 		OnPermissionRequest: copilot.PermissionHandler.ApproveAll,
@@ -57,9 +64,13 @@ func main() {
 		},
 	})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to create session: %v", err)
 	}
-	defer session.Disconnect()
+	defer func() {
+		if discErr := session.Disconnect(); discErr != nil {
+			log.Printf("error disconnecting session: %v", discErr)
+		}
+	}()
 
 	// Set up streaming event handling
 	done := make(chan struct{}, 1)
@@ -131,7 +142,7 @@ func main() {
     `, url)
 
 	if _, err := session.Send(ctx, copilot.MessageOptions{Prompt: prompt}); err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to send prompt: %v", err)
 	}
 	<-done
 
@@ -139,8 +150,11 @@ func main() {
 
 	// Prompt user for test generation
 	fmt.Print("Would you like to generate Playwright accessibility tests? (y/n): ")
-	generateTests, _ := reader.ReadString('\n')
-	generateTests = strings.TrimSpace(strings.ToLower(generateTests))
+	genTestsInput, err := reader.ReadString('\n')
+	if err != nil {
+		log.Fatalf("failed to read test generation input: %v", err)
+	}
+	generateTests := strings.TrimSpace(strings.ToLower(genTestsInput))
 
 	if generateTests == "y" || generateTests == "yes" {
 		detectLanguagePrompt := `
@@ -153,19 +167,22 @@ func main() {
         `
 
 		fmt.Println("\nDetecting project language...\n")
-		// Drain the previous done signal
+		// Drain the previous done signal safely
 		select {
 		case <-done:
 		default:
 		}
 		if _, err := session.Send(ctx, copilot.MessageOptions{Prompt: detectLanguagePrompt}); err != nil {
-			log.Fatal(err)
+			log.Fatalf("failed to send language detection prompt: %v", err)
 		}
 		<-done
 
 		fmt.Print("\n\nConfirm language for tests (or enter a different one): ")
-		language, _ := reader.ReadString('\n')
-		language = strings.TrimSpace(language)
+		langInput, err := reader.ReadString('\n')
+		if err != nil {
+			log.Fatalf("failed to read language input: %v", err)
+		}
+		language := strings.TrimSpace(langInput)
 		if language == "" {
 			language = "TypeScript"
 		}
@@ -194,13 +211,13 @@ func main() {
         `, url, language)
 
 		fmt.Println("\nGenerating accessibility tests...\n")
-		// Drain the previous done signal
+		// Drain the previous done signal safely
 		select {
 		case <-done:
 		default:
 		}
 		if _, err := session.Send(ctx, copilot.MessageOptions{Prompt: testGenerationPrompt}); err != nil {
-			log.Fatal(err)
+			log.Fatalf("failed to send test generation prompt: %v", err)
 		}
 		<-done
 
