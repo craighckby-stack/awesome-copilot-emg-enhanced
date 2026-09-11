@@ -194,3 +194,19 @@ Line 50, Col 8: Property declaration is missing its type annotation.
 Line 17, Col 1: '}' expected.
 ```
 **CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on eng/materialize-plugins.test.mjs.
+
+### ❌ [2026-09-11] eng/pr-risk-scan.mjs `source: mutation-cycle`
+**Symptom:** AST / TypeScript Compiler Validation Rejected
+**EVIDENCE (Machine-Copied Fact):**
+```
+Line 91, Col 6: Property declaration is missing its type annotation.
+Line 94, Col 14: Property declaration is missing its type annotation.
+Line 102, Col 14: Property declaration is missing its type annotation.
+Line 108, Col 6: Property declaration is missing its type annotation.
+Line 110, Col 7: Property declaration is missing its type annotation.
+Line 112, Col 14: Property declaration is missing its type annotation.
+Line 120, Col 14: Property declaration is missing its type annotation.
+Line 237, Col 7: Property declaration is missing its type annotation.
+Line 239, Col 14: Property declaration is missing its type annotation.
+```
+**CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on eng/pr-risk-scan.mjs.
