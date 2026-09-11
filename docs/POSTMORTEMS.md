@@ -219,3 +219,97 @@ Line 91, Col 12: Property declaration is missing its type annotation.
 Line 132, Col 8: Property declaration is missing its type annotation.
 ```
 **CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on eng/yaml-parser.mjs.
+
+### ❌ [2026-09-11] extensions/apng-studio/qr.mjs `source: mutation-cycle`
+**Symptom:** AST / TypeScript Compiler Validation Rejected
+**EVIDENCE (Machine-Copied Fact):**
+```
+Line 24, Col 19: Type annotations can only be used in TypeScript files.
+Line 24, Col 30: Type annotations can only be used in TypeScript files.
+Line 24, Col 39: Type annotations can only be used in TypeScript files.
+Line 27, Col 30: Type annotations can only be used in TypeScript files.
+Line 27, Col 39: Type annotations can only be used in TypeScript files.
+Line 28, Col 15: Type annotations can only be used in TypeScript files.
+Line 40, Col 25: Type annotations can only be used in TypeScript files.
+Line 40, Col 42: Type annotations can only be used in TypeScript files.
+Line 40, Col 51: Type annotations can only be used in TypeScript files.
+Line 55, Col 20: Type annotations can only be used in TypeScript files.
+Line 68, Col 18: Type annotations can only be used in TypeScript files.
+Line 73, Col 32: Type annotations can only be used in TypeScript files.
+Line 73, Col 41: Type annotations can only be used in TypeScript files.
+Line 74, Col 36: Type annotations can only be used in TypeScript files.
+Line 74, Col 57: Type annotations can only be used in TypeScript files.
+Line 76, Col 27: Type annotations can only be used in TypeScript files.
+Line 76, Col 36: Type annotations can only be used in TypeScript files.
+Line 78, Col 33: Type annotations can only be used in TypeScript files.
+Line 78, Col 42: Type annotations can only be used in TypeScript files.
+Line 89, Col 11: Type annotations can only be used in TypeScript files.
+Line 90, Col 16: Type annotations can only be used in TypeScript files.
+Line 90, Col 32: Type annotations can only be used in TypeScript files.
+Line 90, Col 41: Type annotations can only be used in TypeScript files.
+Line 93, Col 19: Type annotations can only be used in TypeScript files.
+Line 98, Col 32: Type annotations can only be used in TypeScript files.
+Line 98, Col 51: Type annotations can only be used in TypeScript files.
+Line 98, Col 60: Type annotations can only be used in TypeScript files.
+Line 118, Col 17: Type annotations can only be used in TypeScript files.
+Line 127, Col 23: Type annotations can only be used in TypeScript files.
+Line 128, Col 21: Type annotations can only be used in TypeScript files.
+Line 139, Col 19: Type annotations can only be used in TypeScript files.
+Line 151, Col 31: Type annotations can only be used in TypeScript files.
+Line 151, Col 40: Type annotations can only be used in TypeScript files.
+Line 156, Col 25: Type annotations can only be used in TypeScript files.
+Line 156, Col 49: Type annotations can only be used in TypeScript files.
+Line 156, Col 60: Type annotations can only be used in TypeScript files.
+Line 156, Col 69: Type annotations can only be used in TypeScript files.
+Line 171, Col 28: Type annotations can only be used in TypeScript files.
+Line 171, Col 58: Type annotations can only be used in TypeScript files.
+Line 171, Col 67: Type annotations can only be used in TypeScript files.
+Line 188, Col 27: Type annotations can only be used in TypeScript files.
+Line 188, Col 49: Type annotations can only be used in TypeScript files.
+Line 197, Col 27: Type annotations can only be used in TypeScript files.
+Line 197, Col 36: Type annotations can only be used in TypeScript files.
+Line 206, Col 30: Type annotations can only be used in TypeScript files.
+Line 206, Col 39: Type annotations can only be used in TypeScript files.
+Line 215, Col 14: Type annotations can only be used in TypeScript files.
+Line 226, Col 37: Type annotations can only be used in TypeScript files.
+Line 226, Col 53: Type annotations can only be used in TypeScript files.
+Line 226, Col 64: Type annotations can only be used in TypeScript files.
+Line 226, Col 73: Type annotations can only be used in TypeScript files.
+Line 230, Col 30: Type annotations can only be used in TypeScript files.
+Line 230, Col 47: Type annotations can only be used in TypeScript files.
+Line 230, Col 56: Type annotations can only be used in TypeScript files.
+Line 232, Col 22: Type annotations can only be used in TypeScript files.
+Line 232, Col 33: Type annotations can only be used in TypeScript files.
+Line 270, Col 25: Type annotations can only be used in TypeScript files.
+Line 270, Col 47: Type annotations can only be used in TypeScript files.
+Line 278, Col 23: Type annotations can only be used in TypeScript files.
+Line 278, Col 54: Type annotations can only be used in TypeScript files.
+Line 278, Col 78: Type annotations can only be used in TypeScript files.
+Line 278, Col 89: Type annotations can only be used in TypeScript files.
+Line 280, Col 17: Type annotations can only be used in TypeScript files.
+Line 298, Col 23: Type annotations can only be used in TypeScript files.
+Line 298, Col 54: Type annotations can only be used in TypeScript files.
+Line 298, Col 75: Type annotations can only be used in TypeScript files.
+Line 298, Col 111: Type annotations can only be used in TypeScript files.
+Line 299, Col 47: Type assertion expressions can only be used in TypeScript files.
+Line 309, Col 29: Type annotations can only be used in TypeScript files.
+Line 309, Col 52: Type annotations can only be used in TypeScript files.
+Line 309, Col 61: Type annotations can only be used in TypeScript files.
+Line 313, Col 17: Type annotations can only be used in TypeScript files.
+Line 316, Col 20: Type annotations can only be used in TypeScript files.
+Line 322, Col 20: Type annotations can only be used in TypeScript files.
+Line 332, Col 30: Type annotations can only be used in TypeScript files.
+Line 332, Col 60: Type annotations can only be used in TypeScript files.
+Line 332, Col 69: Type annotations can only be used in TypeScript files.
+Line 336, Col 17: Type annotations can only be used in TypeScript files.
+Line 349, Col 21: Type annotations can only be used in TypeScript files.
+Line 349, Col 34: Type annotations can only be used in TypeScript files.
+Line 375, Col 28: Type annotations can only be used in TypeScript files.
+Line 375, Col 41: Type annotations can only be used in TypeScript files.
+Line 375, Col 54: Type annotations can only be used in TypeScript files.
+Line 400, Col 32: Type annotations can only be used in TypeScript files.
+Line 400, Col 46: Type annotations can only be used in TypeScript files.
+Line 400, Col 76: Type annotations can only be used in TypeScript files.
+Line 417, Col 21: Type annotations can only be used in TypeScript files.
+```
+**CONSTRAINT (Model Generalization):** Never repeat code patterns that produce this compiler/linter error on extensions/apng-studio/qr.mjs.
