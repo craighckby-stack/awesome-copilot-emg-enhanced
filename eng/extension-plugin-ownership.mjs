@@ -3,6 +3,11 @@ import path from "path";
 
 const AWESOME_COPILOT_NAMESPACE = "com.github.awesome-copilot";
 
+/**
+ * Extracts and normalizes an extension ID from a reference path string.
+ * @param {unknown} reference - The reference string to parse.
+ * @returns {string | null} The normalized extension ID or null if invalid.
+ */
 function extensionIdFromReference(reference) {
   if (typeof reference !== "string" || !reference.startsWith("./extensions/")) {
     return null;
@@ -11,6 +16,11 @@ function extensionIdFromReference(reference) {
   return reference.replace(/^\.\/extensions\//, "").replace(/\/$/, "");
 }
 
+/**
+ * Builds a mapping of extension IDs to their corresponding plugin names.
+ * @param {Array<{ directoryName: string, manifest: Record<string, unknown> }>} pluginEntries - List of plugin entries.
+ * @returns {Map<string, string[]>} Mapping from extension ID to list of plugin names.
+ */
 export function buildExtensionPluginOwners(pluginEntries) {
   const owners = new Map();
   const sortedEntries = [...pluginEntries].sort((a, b) =>
@@ -24,10 +34,23 @@ export function buildExtensionPluginOwners(pluginEntries) {
         : directoryName;
     const extensionIds = new Set([directoryName]);
     const references =
-      manifest?.extensions?.[AWESOME_COPILOT_NAMESPACE]?.extensions;
+      manifest?.extensions &&
+      typeof manifest.extensions === "object" &&
+      manifest.extensions !== null &&
+      AWESOME_COPILOT_NAMESPACE in manifest.extensions
+        ? /** @type {Record<string, unknown>} */ (manifest.extensions)[AWESOME_COPILOT_NAMESPACE]
+        : undefined;
 
-    if (Array.isArray(references)) {
-      for (const reference of references) {
+    const extRefs =
+      typeof references === "object" &&
+      references !== null &&
+      "extensions" in references &&
+      Array.isArray(/** @type {any} */ (references).extensions)
+        ? /** @type {unknown[]} */ (/** @type {any} */ (references).extensions)
+        : null;
+
+    if (extRefs) {
+      for (const reference of extRefs) {
         const extensionId = extensionIdFromReference(reference);
         if (extensionId) {
           extensionIds.add(extensionId);
@@ -47,6 +70,11 @@ export function buildExtensionPluginOwners(pluginEntries) {
   return owners;
 }
 
+/**
+ * Reads extension plugin owners from the specified plugins directory.
+ * @param {string} pluginsDir - Path to the plugins directory.
+ * @returns {Map<string, string[]>} Mapping from extension ID to list of plugin names.
+ */
 export function readExtensionPluginOwners(pluginsDir) {
   if (!fs.existsSync(pluginsDir)) {
     return new Map();
@@ -61,16 +89,27 @@ export function readExtensionPluginOwners(pluginsDir) {
         return null;
       }
 
-      return {
-        directoryName: entry.name,
-        manifest: JSON.parse(fs.readFileSync(manifestPath, "utf-8")),
-      };
+      try {
+        const fileContent = fs.readFileSync(manifestPath, "utf-8");
+        return {
+          directoryName: entry.name,
+          manifest: JSON.parse(fileContent),
+        };
+      } catch {
+        return null;
+      }
     })
-    .filter(Boolean);
+    .filter((entry) => entry !== null);
 
   return buildExtensionPluginOwners(pluginEntries);
 }
 
+/**
+ * Resolves the primary plugin name for a given extension ID.
+ * @param {string} extensionId - The extension ID to resolve.
+ * @param {Map<string, string[]>} owners - The owners mapping.
+ * @returns {string} The resolved plugin name or extension ID.
+ */
 export function resolveExtensionPluginName(extensionId, owners) {
   const pluginNames = owners.get(extensionId) ?? [];
   return (
