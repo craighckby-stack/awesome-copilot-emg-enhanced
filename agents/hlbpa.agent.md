@@ -231,3 +231,4 @@ Prior to returning any output to the user, HLBPA will verify the following:
 - [ ] **RAI Footer**: All documents include a RAI footer with the user's name.
 
 <!-- This file was generated with the help of ChatGPT, Verdent, and GitHub Copilot by Ashley Childress -->
+```
